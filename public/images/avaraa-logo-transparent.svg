@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 160" fill="none">
+  <!-- Stylized A with red triangle -->
+  <g fill="#FDB813">
+    <polygon points="40,135 68,45 98,45 126,135 106,135 100,110 66,110 60,135" />
+    <polygon fill="#C1272D" points="83,85 93,120 73,120" />
+  </g>
+  
+  <!-- V -->
+  <polygon fill="#FDB813" points="150,45 180,45 205,120 230,45 260,45 220,135 190,135" />
+  
+  <!-- A -->
+  <g fill="#FDB813">
+    <polygon points="280,135 308,45 338,45 366,135 346,135 340,110 306,110 300,135" />
+  </g>
+  
+  <!-- R -->
+  <g fill="#FDB813">
+    <path d="M390,45 h45 c20,0 30,10 30,28 c0,14 -7,22 -18,26 l23,36 h-24 l-20,- 32 h-16 v32 h-20 V45 M410,63 v26 h20 c8,0 12,-4 12,-13 s-4,-13 -12,-13 h-20" />
+  </g>
+  
+  <!-- A -->
+  <g fill="#FDB813">
+    <polygon points="490,135 518,45 548,45 576,135 556,135 550,110 516,110 510,135" />
+  </g>
+  
+  <!-- A -->
+  <g fill="#FDB813">
+    <polygon points="600,135 628,45 658,45 686,135 666,135 660,110 626,110 620,135" />
+  </g>
+  
+  <!-- KOMMUNITY text in teal -->
+  <text x="125" y="155" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="300" letter-spacing="15" fill="#3EAAB7">
+    K O M M U N I T Y
+  </text>
+</svg>

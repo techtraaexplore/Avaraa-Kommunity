@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 140" fill="none">
+  <!-- AVARAA in yellow with first A having red triangle -->
+  <g>
+    <!-- First A (stylized with red triangle) -->
+    <path fill="#FDB813" d="M20 110L40 30h25l20 80h-15l-3-12h-19l-3 12H20zm23-25h13l-6.5-26L42 85z"/>
+    <path fill="#C1272D" d="M46.5 70l6-20 6 20z"/>
+    
+    <!-- V -->
+    <path fill="#FDB813" d="M85 30h15l12 45 12-45h15l-20 80h-14L85 30z"/>
+    
+    <!-- A -->
+    <path fill="#FDB813" d="M165 110l20-80h25l20 80h-15l-3-12h-19l-3 12h-15zm23-25h13l-6.5-26-6.5 26z"/>
+    
+    <!-- R -->
+    <path fill="#FDB813" d="M235 30h25c15 0 22 8 22 20 0 10-5 16-12 18l14 42h-17l-11-35h-6v35h-15V30zm15 35h8c6 0 9-3 9-8s-3-8-9-8h-8v16z"/>
+    
+    <!-- A -->
+    <path fill="#FDB813" d="M315 110l20-80h25l20 80h-15l-3-12h-19l-3 12h-15zm23-25h13l-6.5-26-6.5 26z"/>
+    
+    <!-- A -->
+    <path fill="#FDB813" d="M415 110l20-80h25l20 80h-15l-3-12h-19l-3 12h-15zm23-25h13l-6.5-26-6.5 26z"/>
+  </g>
+  
+  <!-- KOMMUNITY in teal below -->
+  <text x="45" y="132" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="300" letter-spacing="12" fill="#40A4B4">
+    K O M M U N I T Y
+  </text>
+</svg>

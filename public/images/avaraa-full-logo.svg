@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" fill="none">
+  <!-- AVARAA text -->
+  <text x="0" y="60" font-family="Impact, Arial Black, sans-serif" font-size="62" font-weight="900" fill="#FDB813" letter-spacing="2">AVARAA</text>
+  
+  <!-- Red triangle accent in first A -->
+  <polygon points="34,25 50,60 18,60" fill="#C1272D"/>
+  
+  <!-- KOMMUNITY text below -->
+  <text x="30" y="100" font-family="Arial, sans-serif" font-size="22" font-weight="300" fill="#3EAAB7" letter-spacing="14">KOMMUNITY</text>
+</svg>
