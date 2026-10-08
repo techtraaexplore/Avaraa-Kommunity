@@ -5,3 +5,5 @@ server/data/*.json
 server/uploads/*
 !server/uploads/.gitkeep
 !server/data/.gitkeep
+
+.vercel
