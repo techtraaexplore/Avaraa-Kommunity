@@ -54,9 +54,15 @@ app.use((err, _req, res, _next) => {
   res.status(500).json({ error: 'Something went wrong on the server.' });
 });
 
-app.listen(PORT, () => {
-  console.log(`Avaraa server running on http://localhost:${PORT}`);
-  if (!adminConfigured()) {
-    console.warn('! ADMIN_PASSWORD is not set. The admin panel is locked. Copy .env.example to .env and set it.');
-  }
-});
+// Only listen if not running in Vercel serverless environment
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Avaraa server running on http://localhost:${PORT}`);
+    if (!adminConfigured()) {
+      console.warn('! ADMIN_PASSWORD is not set. The admin panel is locked. Copy .env.example to .env and set it.');
+    }
+  });
+}
+
+// Export for Vercel serverless
+export default app;
