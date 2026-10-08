@@ -4,9 +4,10 @@ import DayTabs from './DayTabs.jsx';
 import Section from './Section.jsx';
 
 export default function GoaPlan() {
-  const { goa } = useContent();
+  const { goa, labels } = useContent();
   const info = planInfo(goa);
   const t = (s) => fill(s, info);
+  if (goa.enabled === false) return null;
 
   return (
     <Section tone="t" id="goa">
@@ -18,7 +19,7 @@ export default function GoaPlan() {
             <div className="script">{goa.kicker}</div>
             <span className="tape">{info.long}</span>
             <p style={{ margin: '12px 0 0' }}>
-              {info.duration} · <span style={{ whiteSpace: 'nowrap' }}>hosted by {goa.host}</span>
+              {info.duration} · <span style={{ whiteSpace: 'nowrap' }}>{labels?.hostedBy ?? 'hosted by'} {goa.host}</span>
             </p>
           </div>
         </div>
@@ -27,7 +28,7 @@ export default function GoaPlan() {
 
         <div className="two">
           <div className="card yes">
-            <h3>Included</h3>
+            <h3>{labels?.included ?? 'Included'}</h3>
             <ul>
               {(goa.included ?? []).map((x, i) => (
                 <li key={i}>{t(x)}</li>
@@ -35,7 +36,7 @@ export default function GoaPlan() {
             </ul>
           </div>
           <div className="card no">
-            <h3>Not included</h3>
+            <h3>{labels?.notIncluded ?? 'Not included'}</h3>
             <ul>
               {(goa.notIncluded ?? []).map((x, i) => (
                 <li key={i}>{t(x)}</li>

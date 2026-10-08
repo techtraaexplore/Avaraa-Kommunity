@@ -1,5 +1,7 @@
 import { Navigate, useParams } from 'react-router-dom';
 import { Fields } from '../../components/admin/Fields.jsx';
+import FacesEditor from '../../components/admin/FacesEditor.jsx';
+import ReelsEditor from '../../components/admin/ReelsEditor.jsx';
 import { useAdminContent } from '../../context/AdminContentContext.jsx';
 import { PAGES } from './schema.js';
 
@@ -13,6 +15,8 @@ export default function ContentPage() {
     <div>
       <h1>{page.label}</h1>
       <p className="adm-intro">{page.intro}</p>
+      {page.custom === 'reels' && <ReelsEditor value={draft[page.key]} onChange={(v) => update(page.key, v)} />}
+      {page.custom === 'faces' && <FacesEditor value={draft[page.key]} onChange={(v) => update(page.key, v)} />}
       {page.blocks.map((b) => (
         <section className="panel" key={b.title}>
           <h2>{b.title}</h2>

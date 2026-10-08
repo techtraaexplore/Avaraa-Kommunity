@@ -2,13 +2,14 @@ import { useContent } from '../../context/ContentContext.jsx';
 
 export default function Nav() {
   const c = useContent();
+  const L = c.labels ?? {};
   const links = [
-    ['#trips', 'Trips'],
-    ['#goa', 'Goa plan'],
-    ['#why', 'Why Avaraa'],
-    c.moments.enabled !== false && ['#moments', 'Moments'],
-    c.reviews.enabled !== false && ['#reviews', 'Reviews'],
-    ['#faq', 'FAQ'],
+    c.trips.enabled !== false && ['#trips', L.navTrips ?? 'Trips'],
+    c.goa.enabled !== false && ['#goa', L.navGoa ?? 'Goa plan'],
+    c.why.enabled !== false && ['#why', L.navWhy ?? 'Why Avaraa'],
+    c.moments.enabled !== false && ['#moments', L.navMoments ?? 'Moments'],
+    c.reviews.enabled !== false && ['#reviews', L.navReviews ?? 'Reviews'],
+    c.faq.enabled !== false && ['#faq', L.navFaq ?? 'FAQ'],
   ].filter(Boolean);
 
   return (
@@ -25,7 +26,7 @@ export default function Nav() {
           ))}
         </ul>
         <a className="btn" href="#spot">
-          Save my spot
+          {L.navButton ?? 'Save my spot'}
         </a>
       </div>
     </nav>

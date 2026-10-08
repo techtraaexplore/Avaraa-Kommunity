@@ -27,6 +27,14 @@ export const PHOTOS = {
   m3: photo('m3', 'Sunset in the waves'),
   trek: photo('trek', 'Chorão trek'),
   aish: photo('aish', 'Aishwarya (host)'),
+  h1: photo('h1', 'Group photo 1'),
+  h2: photo('h2', 'Group photo 2'),
+  h3: photo('h3', 'Group photo 3'),
+  h4: photo('h4', 'Group photo 4'),
+  h5: photo('h5', 'Group photo 5'),
+  h6: photo('h6', 'Group photo 6'),
+  h7: photo('h7', 'Group photo 7'),
+  h8: photo('h8', 'Group photo 8'),
 };
 
 const sticker = (key, label) => ({ url: `/stickers/${key}.webp`, label });

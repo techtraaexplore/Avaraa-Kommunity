@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useEffect, useMemo, useState } from 'react';
 import { api } from '../../api/client.js';
 import { useContent } from '../../context/ContentContext.jsx';
@@ -7,7 +8,7 @@ import Section from './Section.jsx';
 const NOT_SURE = 'Not sure yet';
 
 export default function SpotForm({ pick }) {
-  const { cta, trips, goa, site } = useContent();
+  const { cta, trips, goa, site, labels: L = {} } = useContent();
   const info = planInfo(goa);
 
   // Trip dropdown is built from the trips list, so it always matches the cards above.
@@ -58,26 +59,26 @@ export default function SpotForm({ pick }) {
         <p style={{ margin: 0 }}>{cta.text}</p>
         <form onSubmit={submit}>
           <label>
-            Name
+            {L.formName ?? 'Name'}
             <input name="n" required autoComplete="name" maxLength={80} />
           </label>
           <label>
-            Phone
+            {L.formPhone ?? 'Phone'}
             <input name="p" type="tel" required autoComplete="tel" maxLength={30} />
           </label>
           <label>
-            City
+            {L.formCity ?? 'City'}
             <input name="c" required autoComplete="address-level2" maxLength={80} />
           </label>
           <label>
-            Solo or group?
+            {L.formGroup ?? 'Solo or group?'}
             <select name="g" defaultValue="Solo">
               <option>Solo</option>
               <option>Group</option>
             </select>
           </label>
           <label>
-            Which trip?
+            {L.formTrip ?? 'Which trip?'}
             <select value={trip} onChange={(e) => setTrip(e.target.value)}>
               {options.map((o) => (
                 <option key={o.label}>{o.label}</option>
@@ -89,6 +90,9 @@ export default function SpotForm({ pick }) {
           <button className="btn" type="submit">
             {cta.button}
           </button>
+          <p className="tnote">
+            {L.formAgree ?? 'By booking you agree to our'} <Link to="/terms">{L.termsLink ?? 'Terms & Conditions'}</Link> {L.formAnd ?? 'and'} <Link to="/privacy">{L.privacyLink ?? 'Privacy Policy'}</Link>.
+          </p>
           {thanks && (
             <p role="status" style={{ margin: 0, fontWeight: 600 }}>
               {thanks}

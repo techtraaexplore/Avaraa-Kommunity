@@ -1,3 +1,4 @@
+import { useContent } from '../../context/ContentContext.jsx';
 import { useRef, useState } from 'react';
 import { STICKERS } from '../../data/assets.js';
 
@@ -43,6 +44,7 @@ function Day({ day, index, back }) {
 
 /** Day 1 / Day 2 / Day 3 tabs with arrows, a "See next day" button and swipe on touch screens. */
 export default function DayTabs({ days }) {
+  const { labels: L = {} } = useContent();
   const [cur, setCur] = useState(0);
   const [back, setBack] = useState(false);
   const navRef = useRef(null);
@@ -83,7 +85,7 @@ export default function DayTabs({ days }) {
           &#8250;
         </button>
       </div>
-      <p className="dhint">Tap a day, or use the arrows, to see each day&apos;s plan</p>
+      <p className="dhint">{L.dayHint ?? "Tap a day, or use the arrows, to see each day's plan"}</p>
       <div className="dpanel" onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
         <Day key={index} day={days[index]} index={index} back={back} />
         <div className="dfoot">

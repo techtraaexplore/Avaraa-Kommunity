@@ -3,6 +3,7 @@ import Section from './Section.jsx';
 
 export default function Faq() {
   const { faq } = useContent();
+  if (faq.enabled === false) return null;
   return (
     <Section tone="b" id="faq">
       <div className="wrap">

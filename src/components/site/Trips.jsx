@@ -4,9 +4,10 @@ import { planInfo } from '../../utils/format.js';
 import Section from './Section.jsx';
 
 export default function Trips({ onPick }) {
-  const { trips, goa } = useContent();
+  const { trips, goa, labels } = useContent();
   const [filter, setFilter] = useState('all');
   const info = planInfo(goa);
+  if (trips.enabled === false) return null;
 
   return (
     <Section tone="b" id="trips">
@@ -54,7 +55,7 @@ export default function Trips({ onPick }) {
             );
           })}
         </div>
-        <p className="swipe script">swipe for more &rarr;</p>
+        <p className="swipe script">{labels?.tripsSwipe ?? 'swipe for more →'}</p>
       </div>
     </Section>
   );

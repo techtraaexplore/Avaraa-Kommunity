@@ -3,6 +3,7 @@ import Section from './Section.jsx';
 
 export default function WhyAvaraa() {
   const { why } = useContent();
+  if (why.enabled === false) return null;
   return (
     <Section tone="w" id="why">
       <div className="wrap">

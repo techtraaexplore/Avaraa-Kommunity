@@ -17,8 +17,7 @@ export default function HappyFaces() {
         <div className="ft">
           {loop.map((f, i) => (
             <div className="fc" key={i} aria-hidden={i >= items.length || undefined}>
-              <img src={f.image} alt={i < items.length ? f.caption : ''} loading="lazy" />
-              <span>{f.caption}</span>
+              <img src={f.image} alt={i < items.length ? f.caption : ''} />
             </div>
           ))}
         </div>
