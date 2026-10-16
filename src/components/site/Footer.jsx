@@ -3,7 +3,8 @@ import { useContent } from '../../context/ContentContext.jsx';
 import { safeUrl, whatsappLink } from '../../utils/format.js';
 
 export default function Footer() {
-  const { site, labels: L = {} } = useContent();
+  const { site, itineraries, labels: L = {} } = useContent();
+  const itOn = itineraries?.enabled !== false;
   const wa = whatsappLink(site);
   const ig = safeUrl(site.instagram);
   return (
@@ -35,6 +36,7 @@ export default function Footer() {
           <a href={wa} {...(wa.startsWith('http') && { target: '_blank', rel: 'noopener noreferrer' })}>
             {L.footerWhatsapp ?? 'WhatsApp'}
           </a>
+          {itOn && <Link to="/itineraries">{L.navItineraries ?? 'Itineraries'}</Link>}
           <Link to="/privacy">{L.privacyLink ?? 'Privacy Policy'}</Link>
           <Link to="/terms">{L.termsLink ?? 'Terms & Conditions'}</Link>
         </div>

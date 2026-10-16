@@ -111,7 +111,7 @@
         "duration": "2 Nights, 3 Days",
         "dates": "Dates TBA",
         "description": "Cliffside cafes, sunset yoga, backwaters, slow evenings.",
-        "priceLabel": "Coming soon",
+        "priceLabel": "₹13,999",
         "ctaLabel": "Tell me first",
         "ctaTarget": "form"
       },
@@ -125,10 +125,10 @@
           "hills"
         ],
         "linkedToPlan": false,
-        "duration": "4 Nights, 5 Days",
+        "duration": "5 Nights, 6 Days",
         "dates": "Dates TBA",
         "description": "The one trip on the calendar worth taking a few extra days for.",
-        "priceLabel": "Coming soon",
+        "priceLabel": "₹17,999",
         "ctaLabel": "Tell me first",
         "ctaTarget": "form"
       }
@@ -251,8 +251,7 @@
       "Chorão Island experience",
       "Yacht experience",
       "Beach & curated group activities",
-      "Trip hosting & coordination",
-      ""
+      "Trip hosting & coordination"
     ],
     "notIncluded": [
       "Travel to and from Goa (Goa-to-Goa package)",

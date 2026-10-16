@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import '../styles/site.css';
 import Faq from '../components/site/Faq.jsx';
 import Footer from '../components/site/Footer.jsx';
@@ -77,6 +78,18 @@ function useScrollReveal() {
 function Site() {
   const { site } = useContent();
   const [pick, setPick] = useState(null);
+  const { search, hash } = useLocation();
+
+  // Arriving from an itinerary page: pre-select the trip in the form and scroll to the section asked for.
+  useEffect(() => {
+    const trip = new URLSearchParams(search).get('trip');
+    if (trip) setPick({ name: trip, at: Date.now() });
+    if (hash) {
+      const t = setTimeout(() => document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView(), 60);
+      return () => clearTimeout(t);
+    }
+    return undefined;
+  }, [search, hash]);
 
   useEffect(() => {
     document.title = site.title;

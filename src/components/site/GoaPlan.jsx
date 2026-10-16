@@ -1,10 +1,12 @@
+import { Link } from 'react-router-dom';
 import { useContent } from '../../context/ContentContext.jsx';
 import { fill, planInfo } from '../../utils/format.js';
 import DayTabs from './DayTabs.jsx';
 import Section from './Section.jsx';
 
 export default function GoaPlan() {
-  const { goa, labels } = useContent();
+  const content = useContent();
+  const { goa, labels } = content;
   const info = planInfo(goa);
   const t = (s) => fill(s, info);
   if (goa.enabled === false) return null;
@@ -21,6 +23,11 @@ export default function GoaPlan() {
             <p style={{ margin: '12px 0 0' }}>
               {info.duration} · <span style={{ whiteSpace: 'nowrap' }}>{labels?.hostedBy ?? 'hosted by'} {goa.host}</span>
             </p>
+            {content.itineraries?.enabled !== false && (
+              <p className="itlink-goa">
+                <Link to="/itineraries/goa">See the full itinerary page &#8250;</Link>
+              </p>
+            )}
           </div>
         </div>
 

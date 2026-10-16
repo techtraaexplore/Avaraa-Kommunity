@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useContent } from '../../context/ContentContext.jsx';
-import { planInfo } from '../../utils/format.js';
+import { planInfo, visibleItineraries } from '../../utils/format.js';
 import Section from './Section.jsx';
 
 export default function Trips({ onPick }) {
-  const { trips, goa, labels } = useContent();
+  const content = useContent();
+  const { trips, goa, labels } = content;
+  const itSlugs = new Set(visibleItineraries(content).map((i) => i.slug));
   const [filter, setFilter] = useState('all');
   const info = planInfo(goa);
   if (trips.enabled === false) return null;
@@ -39,6 +42,11 @@ export default function Trips({ onPick }) {
                 {duration && <span className="pill dur">{duration}</span>}
                 {dates && <span className="pill">{dates}</span>}
                 <p>{t.description}</p>
+                {itSlugs.has(String(t.name).toLowerCase()) && (
+                  <Link className="itlink" to={`/itineraries/${String(t.name).toLowerCase()}`}>
+                    Day-by-day itinerary &#8250;
+                  </Link>
+                )}
                 <div className="foot">
                   <b>{t.priceLabel}</b>
                   {t.ctaTarget === 'plan' ? (

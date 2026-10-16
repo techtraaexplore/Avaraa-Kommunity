@@ -84,3 +84,45 @@ export function whatsappLink(site, message) {
   const text = message ?? site.whatsappMessage ?? '';
   return `https://wa.me/${digits(site.whatsapp)}${text ? `?text=${encodeURIComponent(text)}` : ''}`;
 }
+
+/** Split "Label: details" into its two parts so the label can be shown in bold. Anything else comes back as plain text. */
+export function splitLabel(line) {
+  const m = /^([A-Za-z][A-Za-z &/-]{1,22}):\s+(.+)$/.exec(String(line ?? ''));
+  return m ? { label: m[1], text: m[2] } : { label: '', text: String(line ?? '') };
+}
+
+/**
+ * One shape for an itinerary page. The Goa entry borrows its days, dates, price and inclusions from the Goa plan,
+ * so they are only ever edited in one place.
+ */
+export function resolveItinerary(item, goa) {
+  if (!item) return null;
+  if (!item.linkedToGoa) {
+    return {
+      ...item,
+      dates: '',
+      days: item.days ?? [],
+      included: (item.included ?? []).filter(Boolean),
+      notIncluded: (item.notIncluded ?? []).filter(Boolean),
+      notes: (item.notes ?? []).filter(Boolean),
+    };
+  }
+  const info = planInfo(goa);
+  const t = (s) => fill(s, info);
+  return {
+    ...item,
+    duration: info.duration || item.duration,
+    dates: info.valid ? info.long : '',
+    price: goa.price?.amount ?? item.price,
+    priceNote: goa.price?.note ?? item.priceNote,
+    priceTag: goa.price?.tag ?? '',
+    host: goa.host,
+    days: goa.days ?? [],
+    included: (goa.included ?? []).map(t).filter(Boolean),
+    notIncluded: (goa.notIncluded ?? []).map(t).filter(Boolean),
+    notes: (goa.warnings ?? []).map(t).filter(Boolean),
+  };
+}
+
+/** The itinerary pages that are switched on. */
+export const visibleItineraries = (content) => (content?.itineraries?.enabled === false ? [] : (content?.itineraries?.items ?? []).filter((i) => i.slug && i.enabled !== false));

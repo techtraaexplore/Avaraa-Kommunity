@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useContent } from '../../context/ContentContext.jsx';
 
 export default function Nav() {
@@ -6,6 +7,7 @@ export default function Nav() {
   const links = [
     c.trips.enabled !== false && ['#trips', L.navTrips ?? 'Trips'],
     c.goa.enabled !== false && ['#goa', L.navGoa ?? 'Goa plan'],
+    c.itineraries?.enabled !== false && ['/itineraries', L.navItineraries ?? 'Itineraries'],
     c.why.enabled !== false && ['#why', L.navWhy ?? 'Why Avaraa'],
     c.moments.enabled !== false && ['#moments', L.navMoments ?? 'Moments'],
     c.reviews.enabled !== false && ['#reviews', L.navReviews ?? 'Reviews'],
@@ -21,7 +23,7 @@ export default function Nav() {
         <ul>
           {links.map(([href, label]) => (
             <li key={href}>
-              <a href={href}>{label}</a>
+              {href.startsWith('/') ? <Link to={href}>{label}</Link> : <a href={href}>{label}</a>}
             </li>
           ))}
         </ul>
